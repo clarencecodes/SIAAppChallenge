@@ -13,6 +13,8 @@
 		7514662124F02B140051CFD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7514661F24F02B140051CFD9 /* Main.storyboard */; };
 		7514662324F02B140051CFD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7514662224F02B140051CFD9 /* Assets.xcassets */; };
 		7514662624F02B140051CFD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7514662424F02B140051CFD9 /* LaunchScreen.storyboard */; };
+		7514662F24F04AEE0051CFD9 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514662D24F04AEE0051CFD9 /* MainMenuViewController.swift */; };
+		7514663024F04AEE0051CFD9 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7514662E24F04AEE0051CFD9 /* MainMenuViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		7514662224F02B140051CFD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7514662524F02B140051CFD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7514662724F02B140051CFD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7514662D24F04AEE0051CFD9 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		7514662E24F04AEE0051CFD9 /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				7514662224F02B140051CFD9 /* Assets.xcassets */,
 				7514662424F02B140051CFD9 /* LaunchScreen.storyboard */,
 				7514662724F02B140051CFD9 /* Info.plist */,
+				7514662D24F04AEE0051CFD9 /* MainMenuViewController.swift */,
+				7514662E24F04AEE0051CFD9 /* MainMenuViewController.xib */,
 			);
 			path = SIAAppChallenge;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7514663024F04AEE0051CFD9 /* MainMenuViewController.xib in Resources */,
 				7514662624F02B140051CFD9 /* LaunchScreen.storyboard in Resources */,
 				7514662324F02B140051CFD9 /* Assets.xcassets in Resources */,
 				7514662124F02B140051CFD9 /* Main.storyboard in Resources */,
@@ -138,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7514662F24F04AEE0051CFD9 /* MainMenuViewController.swift in Sources */,
 				7514661E24F02B140051CFD9 /* ViewController.swift in Sources */,
 				7514661A24F02B140051CFD9 /* AppDelegate.swift in Sources */,
 				7514661C24F02B140051CFD9 /* SceneDelegate.swift in Sources */,
