@@ -10,6 +10,8 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
 
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var checkInAndOutBtn: UIButton! {
         didSet {
             checkInAndOutBtn.backgroundColor = UIColor.orange
@@ -24,17 +26,32 @@ class MainMenuViewController: UIViewController {
         }
     }
     
+    // MARK: - View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
 
+    // MARK: - IBActions
+    
     @IBAction func checkInAndOutBtnTapped(_ sender: UIButton) {
         // Launch QR Scanner
+        
     }
     
     @IBAction func facilitiesBtnTapped(_ sender: UIButton) {
         // Display lounge floor plan
+        let vc = FacilitiesViewController(nibName: "FacilitiesViewController", bundle: nil)
+        
+        self.navigationController?.isNavigationBarHidden = false
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     
 
 }

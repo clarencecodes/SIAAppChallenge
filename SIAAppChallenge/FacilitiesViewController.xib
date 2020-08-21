@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacilitiesViewController" customModule="SIAAppChallenge" customModuleProvider="target">
+            <connections>
+                <outlet property="meetingRoomBtn" destination="XbK-1i-VCf" id="0Sj-lb-ZWP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbK-1i-VCf">
+                    <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="350" id="hih-GJ-C7r"/>
+                        <constraint firstAttribute="height" constant="200" id="jL9-gV-S7S"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <state key="normal" title="Meeting Room"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfT-cO-56q">
+                    <rect key="frame" x="0.0" y="824" width="450" height="20"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="5Mn-g7-UaD"/>
+                        <constraint firstAttribute="width" constant="450" id="ISh-Tq-q2h"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check-In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSy-HC-zGB">
+                    <rect key="frame" x="0.0" y="844" width="350" height="80"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="350" id="kUs-pc-8F0"/>
+                        <constraint firstAttribute="height" constant="80" id="paN-gW-l1m"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Utilities" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75b-2c-HjS">
+                    <rect key="frame" x="0.0" y="744" width="350" height="80"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="350" id="COy-kN-fS7"/>
+                        <constraint firstAttribute="height" constant="80" id="gIy-V2-cQX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Utilities" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPU-sd-nhR">
+                    <rect key="frame" x="50" y="347" width="170" height="230"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="230" id="Ysv-0T-hQy"/>
+                        <constraint firstAttribute="width" constant="170" id="vrU-iY-X2h"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="75b-2c-HjS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2Aw-LL-wyI"/>
+                <constraint firstItem="XbK-1i-VCf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MHC-tg-8bx"/>
+                <constraint firstItem="75b-2c-HjS" firstAttribute="bottom" secondItem="RfT-cO-56q" secondAttribute="top" id="PCd-Lh-H7f"/>
+                <constraint firstItem="PPU-sd-nhR" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-40" id="TV9-cN-IqT"/>
+                <constraint firstItem="XbK-1i-VCf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TcX-xc-awU"/>
+                <constraint firstItem="wSy-HC-zGB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ua4-Gh-Q3G"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wSy-HC-zGB" secondAttribute="bottom" constant="80" id="Uao-Pd-Qj8"/>
+                <constraint firstItem="RfT-cO-56q" firstAttribute="bottom" secondItem="wSy-HC-zGB" secondAttribute="top" id="kZF-wX-dVP"/>
+                <constraint firstItem="RfT-cO-56q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rYA-YF-Yni"/>
+                <constraint firstItem="PPU-sd-nhR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="xRL-49-QSi"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="138.79941434846265" y="127.73437499999999"/>
+        </view>
+    </objects>
+</document>
