@@ -42,6 +42,7 @@ class MainMenuViewController: UIViewController {
     @IBAction func checkInAndOutBtnTapped(_ sender: UIButton) {
         // Launch QR Scanner
         let vc = ScannerViewController()
+        vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true, completion: nil)
     }
@@ -53,6 +54,15 @@ class MainMenuViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
+}
 
+// MARK: - ScannerDelegate
+
+extension MainMenuViewController: ScannerDelegate {
+    func didScanCode(code: String) {
+        // Display lounge floor plan
+        let vc = FacilitiesViewController(nibName: "FacilitiesViewController", bundle: nil)
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

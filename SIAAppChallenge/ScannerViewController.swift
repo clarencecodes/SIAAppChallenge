@@ -8,6 +8,12 @@
 
 import AVFoundation
 import UIKit
+import Alamofire
+import SwiftyJSON
+
+protocol ScannerDelegate {
+    func didScanCode(code: String)
+}
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
@@ -15,6 +21,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    var delegate: ScannerDelegate?
 
     // MARK: - View life cycle
     
@@ -107,6 +114,29 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
     func found(code: String) {
         print(code)
+        let params: [String: Any] = ["id": code]
+        let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+        // Check if user is checked in before checking in or out
+        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/IsCheckedIn")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
+            do {
+                let resJson = try JSON.init(data: response.data!)
+                let result = resJson["result"].boolValue
+                if result == true {
+                    // User is checked in, proceed to check out
+                    // TODO: call CheckInLounge API
+                } else {
+                    // User is not checked in, proceed to check in
+                    // TODO: call CheckOutLounge API
+                }
+                
+                self.dismiss(animated: true) {
+                    self.delegate?.didScanCode(code: code)
+                }
+            } catch {
+                print("Error checking if user is checked in")
+            }
+        }
+        
     }
 
     override var prefersStatusBarHidden: Bool {

@@ -71,7 +71,6 @@ class FacilitiesViewController: UIViewController {
             do {
                 let resJson = try JSON.init(data: response.data!)
                 for (index, res) in resJson.enumerated() {
-                    print("\(res.0) \(res.1)")
                     if res.1.intValue == 0 {
                         // free seat
                         self.seats[index].backgroundColor = .green
