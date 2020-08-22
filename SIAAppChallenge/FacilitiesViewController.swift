@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class FacilitiesViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var meetingRoomBtn: UIButton! {
@@ -24,6 +26,10 @@ class FacilitiesViewController: UIViewController {
             for seat in seats {
                 seat.layer.cornerRadius = 25
             }
+            
+            seats.sort { (a, b) -> Bool in
+                return a.tag < b.tag
+            }
         }
     }
     
@@ -31,7 +37,29 @@ class FacilitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/GetSeatAvailability/")!).response { response in
+            do {
+                let resJson = try JSON.init(data: response.data!)
+                for (index, res) in resJson.enumerated() {
+                    print("\(res.0) \(res.1)")
+                    if res.1.intValue == 0 {
+                        // free seat
+                        self.seats[index].backgroundColor = .green
+                    } else if res.1.intValue == 1 {
+                        // blocked seat (for safe distancing)
+                        self.seats[index].backgroundColor = .lightGray
+                    } else {
+                        // occupied seat
+                        self.seats[index].backgroundColor = .red
+                    }
+                }
+            } catch {
+                print("Error getting seat availability")
+            }
+        }
+        
     }
-
-
+    
+    
 }

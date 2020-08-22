@@ -1,0 +1,6 @@
+framework module Pods_SIAAppChallenge {
+  umbrella header "Pods-SIAAppChallenge-umbrella.h"
+
+  export *
+  module * { export * }
+}

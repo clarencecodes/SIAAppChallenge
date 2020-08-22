@@ -17,9 +17,11 @@
 		7514663024F04AEE0051CFD9 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7514662E24F04AEE0051CFD9 /* MainMenuViewController.xib */; };
 		7514663324F055620051CFD9 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514663124F055620051CFD9 /* FacilitiesViewController.swift */; };
 		7514663424F055620051CFD9 /* FacilitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7514663224F055620051CFD9 /* FacilitiesViewController.xib */; };
+		9556181B2D6FC9E6581C3BE0 /* Pods_SIAAppChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF9880EAABC1EB2072CF558 /* Pods_SIAAppChallenge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BF9880EAABC1EB2072CF558 /* Pods_SIAAppChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SIAAppChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7514661624F02B140051CFD9 /* SIAAppChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIAAppChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7514661924F02B140051CFD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7514661B24F02B140051CFD9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +34,8 @@
 		7514662E24F04AEE0051CFD9 /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 		7514663124F055620051CFD9 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		7514663224F055620051CFD9 /* FacilitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilitiesViewController.xib; sourceTree = "<group>"; };
+		7BAF62B365F79AE6F4AB5F56 /* Pods-SIAAppChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAAppChallenge.debug.xcconfig"; path = "Target Support Files/Pods-SIAAppChallenge/Pods-SIAAppChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		FD8A5D1F8E661A1C60D0F265 /* Pods-SIAAppChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAAppChallenge.release.xcconfig"; path = "Target Support Files/Pods-SIAAppChallenge/Pods-SIAAppChallenge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +43,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9556181B2D6FC9E6581C3BE0 /* Pods_SIAAppChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32D2030BFC328239C79E3210 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BAF62B365F79AE6F4AB5F56 /* Pods-SIAAppChallenge.debug.xcconfig */,
+				FD8A5D1F8E661A1C60D0F265 /* Pods-SIAAppChallenge.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7514660D24F02B140051CFD9 = {
 			isa = PBXGroup;
 			children = (
 				7514661824F02B140051CFD9 /* SIAAppChallenge */,
 				7514661724F02B140051CFD9 /* Products */,
+				32D2030BFC328239C79E3210 /* Pods */,
+				C63B8DD6C07212736EEF59E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +96,14 @@
 			path = SIAAppChallenge;
 			sourceTree = "<group>";
 		};
+		C63B8DD6C07212736EEF59E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BF9880EAABC1EB2072CF558 /* Pods_SIAAppChallenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +111,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7514662A24F02B140051CFD9 /* Build configuration list for PBXNativeTarget "SIAAppChallenge" */;
 			buildPhases = (
+				43CA8970E75208E1C7E17BC8 /* [CP] Check Pods Manifest.lock */,
 				7514661224F02B140051CFD9 /* Sources */,
 				7514661324F02B140051CFD9 /* Frameworks */,
 				7514661424F02B140051CFD9 /* Resources */,
+				BE3CDBAF7450CD995B8E3CCF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -146,6 +173,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		43CA8970E75208E1C7E17BC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SIAAppChallenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE3CDBAF7450CD995B8E3CCF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SIAAppChallenge/Pods-SIAAppChallenge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SIAAppChallenge/Pods-SIAAppChallenge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SIAAppChallenge/Pods-SIAAppChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7514661224F02B140051CFD9 /* Sources */ = {
@@ -298,6 +367,7 @@
 		};
 		7514662B24F02B140051CFD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BAF62B365F79AE6F4AB5F56 /* Pods-SIAAppChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -316,6 +386,7 @@
 		};
 		7514662C24F02B140051CFD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD8A5D1F8E661A1C60D0F265 /* Pods-SIAAppChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
