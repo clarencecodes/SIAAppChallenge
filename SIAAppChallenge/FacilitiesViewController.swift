@@ -19,6 +19,7 @@ class FacilitiesViewController: UIViewController {
     // MARK: - Properties
     
     var isCheckingIn = false
+    var userId: String?
     
     // MARK: - IBOutlets
     
@@ -62,9 +63,15 @@ class FacilitiesViewController: UIViewController {
     }
     
     @IBAction func seatBtnTapped(_ sender: UIButton) {
-        print(sender.tag)
-        if sender.backgroundColor == .green {
-            
+        // If user is checking in and the seat is available
+        // go ahead with checking in to the lounge
+        if let userId = userId,
+            isCheckingIn && sender.backgroundColor == .green {
+            checkIn(userId: userId, seatNo: sender.tag)
+        }
+        
+        if !isCheckingIn && sender.backgroundColor == .lightGray {
+            self.checkOut()
         }
     }
     
@@ -130,5 +137,69 @@ class FacilitiesViewController: UIViewController {
             }
         }
     }
+    
+    private func checkIn(userId: String, seatNo: Int) {
+        
+        let params: [String: Any] = [
+            "id": userId,
+            "seatNo": seatNo
+        ]
+        let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+        
+        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/CheckInLounge")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
+            do {
+                let resJson = try JSON.init(data: response.data!)
+                let result = resJson["result"].boolValue
+                
+                if result == true {
+                    
+                    // Check in successful
+                    
+                    self.isCheckingIn = false
+                    
+                    // Reload updated available seats and facilities from API
+                    self.getSeatAvailability()
+                    self.getFacilitiesAvailability()
+                    
+                    self.view.makeToast("Welcome to SilverKris Lounge.")
+                } else {
+                    self.view.makeToast("User has already checked in.")
+                }
+            } catch {
+                print("Error checking in")
+            }
+        }
+        
+    }
+    
+    private func checkOut() {
+        guard let userId = userId else { return }
+        
+        let params: [String: Any] = [
+            "id": userId
+        ]
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/CheckOutLounge")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
+            do {
+                let resJson = try JSON.init(data: response.data!)
+                let result = resJson["result"].boolValue
+                if result == true {
+                    self.dismiss(animated: true) {
+                        self.view.makeToast("Checkout successful. Thank you for lounging with SilverKris Lounge.")
+                    }
+                } else {
+                    self.dismiss(animated: true) {
+                        self.view.makeToast("Thank you for checking out.")
+                    }
+                }
+            } catch {
+                print("Error checking if user is checked in")
+            }
+        }
+    }
+
     
 }

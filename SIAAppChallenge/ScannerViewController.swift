@@ -14,6 +14,8 @@ import Toast_Swift
 
 protocol ScannerDelegate {
     func presentLoungeFloorPlanForCheckIn(userId: String)
+    func didCheckOutSuccessfully()
+    func didNotCheckOutSuccessfully()
 }
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
@@ -164,13 +166,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let resJson = try JSON.init(data: response.data!)
                 let result = resJson["result"].boolValue
                 if result == true {
-                    self.dismiss(animated: true) {
-                        self.view.makeToast("Checkout successful. Thank you for lounging with SilverKris Lounge.")
-                    }
+                    self.delegate?.didCheckOutSuccessfully()
                 } else {
-                    self.dismiss(animated: true) {
-                        self.view.makeToast("Thank you for checking out.")
-                    }
+                    self.delegate?.didNotCheckOutSuccessfully()
                 }
             } catch {
                 print("Error checking if user is checked in")
