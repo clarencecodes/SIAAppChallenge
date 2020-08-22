@@ -20,7 +20,7 @@ protocol FacilityBookingDelegate {
 class FacilitiesViewController: UIViewController {
     
     // MARK: - Properties
-    
+    var reloadTimer: Timer!
     var isCheckingIn = false
     var userId: String?
     
@@ -50,6 +50,10 @@ class FacilitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Reload data every 60 seconds
+        reloadTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(reloadData), userInfo: nil, repeats: true)
+        
         getSeatAvailability()
         
         // If user is checking in, only show available seats, and prompt user to select a seat.
@@ -95,6 +99,14 @@ class FacilitiesViewController: UIViewController {
     }
     
     // MARK: - Network requests
+    
+    @objc private func reloadData() {
+        getSeatAvailability()
+        
+        if !isCheckingIn {
+            getFacilitiesAvailability()
+        }
+    }
     
     private func getSeatAvailability() {
         AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/GetSeatAvailability/")!).response { response in
