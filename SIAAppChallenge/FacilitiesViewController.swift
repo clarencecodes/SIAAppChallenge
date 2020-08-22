@@ -66,7 +66,9 @@ class FacilitiesViewController: UIViewController {
         if !isCheckingIn {
             getFacilitiesAvailability()
         } else {
-            self.view.makeToast("Welcome, please select your seat to get started. Available seats are in green while occupied seats are red.")
+            let alert = UIAlertController(title: "Welcome", message: "Please select your seat to get started. Available seats are in green while occupied seats are red.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
