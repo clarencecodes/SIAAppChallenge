@@ -9,6 +9,12 @@
 import UIKit
 import AVFoundation
 
+protocol CheckInOutDelegate {
+    func presentLoungeFloorPlanForCheckIn(userId: String)
+    func didCheckOutSuccessfully()
+    func didNotCheckOutSuccessfully()
+}
+
 class MainMenuViewController: UIViewController {
 
     // MARK: - IBOutlets
@@ -42,8 +48,8 @@ class MainMenuViewController: UIViewController {
     @IBAction func checkInAndOutBtnTapped(_ sender: UIButton) {
         // Launch QR Scanner
         let vc = ScannerViewController()
-        vc.delegate = self
-        vc.modalPresentationStyle = .overFullScreen
+        vc.checkInOutDelegate = self
+        vc.scanType = .checkIn
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -58,7 +64,7 @@ class MainMenuViewController: UIViewController {
 
 // MARK: - ScannerDelegate
 
-extension MainMenuViewController: ScannerDelegate {
+extension MainMenuViewController: CheckInOutDelegate {
     
     func presentLoungeFloorPlanForCheckIn(userId: String) {
         // Display lounge floor plan

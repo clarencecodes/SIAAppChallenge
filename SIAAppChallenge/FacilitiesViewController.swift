@@ -10,8 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-enum FacilityType {
-    case meetingRoom, seat, shower
+protocol FacilityBookingDelegate {
+    func didBookMeetingRoom()
+    func didEndBookingForMeetingRoom()
+    func didBookShowerRoom()
+    func didEndBookingForShowerRoom()
 }
 
 class FacilitiesViewController: UIViewController {
@@ -59,7 +62,12 @@ class FacilitiesViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func meetingRoomBtnTapped(_ sender: UIButton) {
+        guard sender.backgroundColor == .green || sender.backgroundColor == .red else { return }
         
+        let vc = ScannerViewController()
+        vc.scanType = .meetingRoom
+        vc.facilityBookingDelegate = self
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func seatBtnTapped(_ sender: UIButton) {
@@ -76,7 +84,12 @@ class FacilitiesViewController: UIViewController {
     }
     
     @IBAction func showerBtnTapped(_ sender: UIButton) {
-        print(sender.tag)
+        guard sender.backgroundColor == .green || sender.backgroundColor == .red else { return }
+        
+        let vc = ScannerViewController()
+        vc.scanType = .shower
+        vc.facilityBookingDelegate = self
+        self.present(vc, animated: true, completion: nil)
     }
     
     // MARK: - Network requests
@@ -118,8 +131,8 @@ class FacilitiesViewController: UIViewController {
                     updatedIndex = index
                 }
                 
-                for index in updatedIndex..<self.showers.count - 1 {
-                    self.showers[index].backgroundColor = .lightGray
+                for index in updatedIndex..<self.showers.count {
+                    self.showers[index].backgroundColor = .red
                 }
                 
                 // Get availability of meeting room
@@ -129,7 +142,7 @@ class FacilitiesViewController: UIViewController {
                 if meetingRoomQuantity == 1 {
                     self.meetingRoomBtn.backgroundColor = .green
                 } else {
-                    self.meetingRoomBtn.backgroundColor = .gray
+                    self.meetingRoomBtn.backgroundColor = .red
                 }
                 
             } catch {
@@ -200,6 +213,40 @@ class FacilitiesViewController: UIViewController {
             }
         }
     }
-
     
+}
+
+
+// MARK: - FacilityBookingDelegate
+
+extension FacilitiesViewController: FacilityBookingDelegate {
+    func didBookMeetingRoom() {
+        self.view.makeToast("Meeting room booked!")
+        self.meetingRoomBtn.backgroundColor = .red
+    }
+    
+    func didEndBookingForMeetingRoom() {
+        self.view.makeToast("Meeting room booking ended.")
+        self.meetingRoomBtn.backgroundColor = .green
+    }
+
+    func didBookShowerRoom() {
+        for shower in showers {
+            if shower.backgroundColor == .green {
+                self.view.makeToast("Shower room booked!")
+                shower.backgroundColor = .red
+                break
+            }
+        }
+    }
+    
+    func didEndBookingForShowerRoom() {
+        for shower in showers {
+            if shower.backgroundColor == .red {
+                self.view.makeToast("Shower room booking ended.")
+                shower.backgroundColor = .green
+                break
+            }
+        }
+    }
 }

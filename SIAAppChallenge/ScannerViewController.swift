@@ -12,10 +12,8 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-protocol ScannerDelegate {
-    func presentLoungeFloorPlanForCheckIn(userId: String)
-    func didCheckOutSuccessfully()
-    func didNotCheckOutSuccessfully()
+enum ScanType {
+    case meetingRoom, shower, checkIn
 }
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
@@ -24,9 +22,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    var delegate: ScannerDelegate?
+    
+    var checkInOutDelegate: CheckInOutDelegate?
+    var facilityBookingDelegate: FacilityBookingDelegate?
     
     var userId: String?
+    
+    var scanType: ScanType?
 
     // MARK: - View life cycle
     
@@ -120,25 +122,74 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func found(code: String) {
         self.userId = code
         
-        let params: [String: Any] = ["id": code]
-        let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
-        // Check if user is checked in before checking in or out
-        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/IsCheckedIn")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
-            do {
-                let resJson = try JSON.init(data: response.data!)
-                let result = resJson["result"].boolValue
-                if result == true {
-                    // User is checked in, proceed to check out
-                    self.checkOut()
-                } else {
-                    // User is not checked in, proceed to select seat in FacilitiesViewController and check in
-                    self.dismiss(animated: true) {
-                        self.delegate?.presentLoungeFloorPlanForCheckIn(userId: code)
+        switch scanType {
+        case .checkIn:
+            let params: [String: Any] = ["id": code]
+            let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+            // Check if user is checked in before checking in or out
+            AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/IsCheckedIn")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
+                do {
+                    let resJson = try JSON.init(data: response.data!)
+                    let result = resJson["result"].boolValue
+                    if result == true {
+                        // User is checked in, proceed to check out
+                        self.checkOut()
+                    } else {
+                        // User is not checked in, proceed to select seat in FacilitiesViewController and check in
+                        self.dismiss(animated: true) {
+                            self.checkInOutDelegate?.presentLoungeFloorPlanForCheckIn(userId: code)
+                        }
                     }
+                } catch {
+                    print("Error checking if user is checked in")
                 }
-            } catch {
-                print("Error checking if user is checked in")
             }
+        case .meetingRoom:
+            let params: [String: Any] = [
+                "id": code,
+                "facilityType": 3
+            ]
+            let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+            
+            AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/CheckInOutFacilities")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
+                do {
+                    let resJson = try JSON.init(data: response.data!)
+                    let result = resJson["result"].stringValue
+
+                    if result == "Booked" {
+                        self.facilityBookingDelegate?.didBookMeetingRoom()
+                    } else if result == "Ended" {
+                        self.facilityBookingDelegate?.didEndBookingForMeetingRoom()
+                    }
+
+                } catch {
+                    print("Error checking in or out of meeting room")
+                }
+            }
+        case .shower:
+            let params: [String: Any] = [
+                "id": code,
+                "facilityType": 2
+            ]
+            let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+            
+            AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/CheckInOutFacilities")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
+                do {
+                    let resJson = try JSON.init(data: response.data!)
+                    let result = resJson["result"].stringValue
+
+                    if result == "Booked" {
+                        self.facilityBookingDelegate?.didBookShowerRoom()
+                    } else if result == "Ended" {
+                        self.facilityBookingDelegate?.didEndBookingForShowerRoom()
+                    }
+
+                } catch {
+                    print("Error checking in or out of meeting room")
+                }
+            }
+        default:
+            break
         }
         
     }
@@ -166,9 +217,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let resJson = try JSON.init(data: response.data!)
                 let result = resJson["result"].boolValue
                 if result == true {
-                    self.delegate?.didCheckOutSuccessfully()
+                    self.checkInOutDelegate?.didCheckOutSuccessfully()
                 } else {
-                    self.delegate?.didNotCheckOutSuccessfully()
+                    self.checkInOutDelegate?.didNotCheckOutSuccessfully()
                 }
             } catch {
                 print("Error checking if user is checked in")
