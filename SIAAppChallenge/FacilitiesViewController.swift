@@ -33,11 +33,17 @@ class FacilitiesViewController: UIViewController {
         }
     }
     
+    @IBOutlet var showers: [UIButton]!
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getSeatAvailability()
+        getFacilitiesAvailability()
+    }
+    
+    private func getSeatAvailability() {
         AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/GetSeatAvailability/")!).response { response in
             do {
                 let resJson = try JSON.init(data: response.data!)
@@ -58,8 +64,41 @@ class FacilitiesViewController: UIViewController {
                 print("Error getting seat availability")
             }
         }
-        
     }
     
+    private func getFacilitiesAvailability() {
+        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/GetFacilitiesAvailability/")!).response { response in
+            do {
+                let resJson = try JSON.init(data: response.data!)
+                
+                // Get availability of showers
+                let shower = resJson.arrayValue.first { $0["type"].stringValue == "shower" }!
+                let showerQuantity = shower["quantity"].intValue
+                
+                var updatedIndex = 0
+                for index in 0..<showerQuantity {
+                    self.showers[index].backgroundColor = .green
+                    updatedIndex = index
+                }
+                
+                for index in updatedIndex..<self.showers.count - 1 {
+                    self.showers[index].backgroundColor = .lightGray
+                }
+                
+                // Get availability of meeting room
+                let meetingRoom = resJson.arrayValue.first { $0["type"].stringValue == "meeting_room" }!
+                let meetingRoomQuantity = meetingRoom["quantity"].intValue
+                
+                if meetingRoomQuantity == 1 {
+                    self.meetingRoomBtn.backgroundColor = .green
+                } else {
+                    self.meetingRoomBtn.backgroundColor = .gray
+                }
+                
+            } catch {
+                print("Error getting facilities availability")
+            }
+        }
+    }
     
 }
