@@ -52,10 +52,12 @@ class FacilitiesViewController: UIViewController {
         super.viewDidLoad()
         getSeatAvailability()
         
-        // If user is checking in, only show available seats.
+        // If user is checking in, only show available seats, and prompt user to select a seat.
         // If user is not checking in, show available seats and facilities
         if !isCheckingIn {
             getFacilitiesAvailability()
+        } else {
+            self.view.makeToast("Welcome, please select your seat to get started. Available seats are in green while occupied seats are red.")
         }
     }
     
@@ -174,7 +176,7 @@ class FacilitiesViewController: UIViewController {
                     self.getSeatAvailability()
                     self.getFacilitiesAvailability()
                     
-                    self.view.makeToast("Welcome to SilverKris Lounge.")
+                    self.view.makeToast("You have successfully checked in. Welcome to SilverKris Lounge.")
                 } else {
                     self.view.makeToast("User has already checked in.")
                 }
