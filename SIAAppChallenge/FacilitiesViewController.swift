@@ -19,6 +19,14 @@ class FacilitiesViewController: UIViewController {
         }
     }
     
+    @IBOutlet var seats: [UIButton]! {
+        didSet {
+            for seat in seats {
+                seat.layer.cornerRadius = 25
+            }
+        }
+    }
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
