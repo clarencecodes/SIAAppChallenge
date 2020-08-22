@@ -10,6 +10,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacilitiesViewController" customModule="SIAAppChallenge" customModuleProvider="target">
             <connections>
                 <outlet property="meetingRoomBtn" destination="XbK-1i-VCf" id="0Sj-lb-ZWP"/>
+                <outlet property="trashIndicator" destination="adt-FH-152" id="yCw-Yo-MV3"/>
+                <outlet property="trashIndicatorContentView" destination="AFc-83-Hzt" id="Ci9-DJ-coA"/>
+                <outlet property="trashIndicatorTopConstraint" destination="h2R-ig-oGZ" id="jFe-Ne-qIp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="seats" destination="s04-x0-tym" collectionClass="NSMutableArray" id="wkG-5S-MJe"/>
                 <outletCollection property="seats" destination="jD5-FH-vcS" collectionClass="NSMutableArray" id="uUh-Va-prg"/>
@@ -629,6 +632,32 @@
                         <constraint firstItem="DG8-4s-ECL" firstAttribute="height" secondItem="nNN-qX-kP4" secondAttribute="height" id="tMf-X2-jhe"/>
                     </constraints>
                 </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C0l-2n-Ydh">
+                    <rect key="frame" x="320" y="29" width="130" height="100.5"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="Xxv-4j-0f2"/>
+                        <constraint firstAttribute="width" constant="130" id="hrh-77-wpf"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFc-83-Hzt" userLabel="trash view">
+                    <rect key="frame" x="364.5" y="57.5" width="41" height="61"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adt-FH-152" userLabel="trash indicator">
+                            <rect key="frame" x="0.0" y="0.0" width="41" height="61"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="61" id="3yz-8a-Gde"/>
+                        <constraint firstAttribute="bottom" secondItem="adt-FH-152" secondAttribute="bottom" id="XrG-Qi-1V8"/>
+                        <constraint firstAttribute="trailing" secondItem="adt-FH-152" secondAttribute="trailing" id="anC-ac-ETY"/>
+                        <constraint firstItem="adt-FH-152" firstAttribute="top" secondItem="AFc-83-Hzt" secondAttribute="top" id="h2R-ig-oGZ"/>
+                        <constraint firstItem="adt-FH-152" firstAttribute="leading" secondItem="AFc-83-Hzt" secondAttribute="leading" id="p1f-eZ-u1Z"/>
+                        <constraint firstAttribute="width" constant="41" id="vhX-7k-tOF"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -636,6 +665,8 @@
                 <constraint firstItem="QT6-6s-UF1" firstAttribute="leading" secondItem="jyz-V9-gif" secondAttribute="trailing" constant="70" id="2YT-Qs-ijL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6hG-lH-h1L" secondAttribute="bottom" id="5KO-U1-PMC"/>
                 <constraint firstItem="B1v-th-2Fg" firstAttribute="trailing" secondItem="UJ6-cb-LtT" secondAttribute="leading" id="6LG-gX-JbW"/>
+                <constraint firstItem="AFc-83-Hzt" firstAttribute="centerX" secondItem="C0l-2n-Ydh" secondAttribute="centerX" id="GbT-w0-bAk"/>
+                <constraint firstItem="C0l-2n-Ydh" firstAttribute="leading" secondItem="XbK-1i-VCf" secondAttribute="trailing" constant="20" id="Ial-fd-b4M"/>
                 <constraint firstItem="QT6-6s-UF1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="Kko-xc-vMe"/>
                 <constraint firstItem="XbK-1i-VCf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MHC-tg-8bx"/>
                 <constraint firstItem="75b-2c-HjS" firstAttribute="bottom" secondItem="RfT-cO-56q" secondAttribute="top" id="PCd-Lh-H7f"/>
@@ -645,10 +676,12 @@
                 <constraint firstItem="XbK-1i-VCf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TcX-xc-awU"/>
                 <constraint firstItem="wSy-HC-zGB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ua4-Gh-Q3G"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wSy-HC-zGB" secondAttribute="bottom" constant="80" id="Uao-Pd-Qj8"/>
+                <constraint firstItem="AFc-83-Hzt" firstAttribute="centerY" secondItem="C0l-2n-Ydh" secondAttribute="centerY" constant="8" id="Wml-fI-glC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="B1v-th-2Fg" secondAttribute="bottom" id="aeK-QC-Yh6"/>
                 <constraint firstItem="qE6-6H-Sq7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="cqF-8z-XW7"/>
                 <constraint firstItem="RfT-cO-56q" firstAttribute="bottom" secondItem="wSy-HC-zGB" secondAttribute="top" id="kZF-wX-dVP"/>
                 <constraint firstItem="IDl-Do-LbN" firstAttribute="top" secondItem="QbF-9p-Arz" secondAttribute="bottom" constant="50" id="nfy-GF-MLI"/>
+                <constraint firstItem="C0l-2n-Ydh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="qZm-jc-zsj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QbF-9p-Arz" secondAttribute="trailing" constant="60" id="rCm-XF-a5x"/>
                 <constraint firstItem="RfT-cO-56q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rYA-YF-Yni"/>
                 <constraint firstItem="QbF-9p-Arz" firstAttribute="leading" secondItem="QT6-6s-UF1" secondAttribute="trailing" constant="70" id="vJ1-o0-hM2"/>
@@ -661,4 +694,7 @@
             <point key="canvasLocation" x="138.79941434846265" y="127.73437499999999"/>
         </view>
     </objects>
+    <resources>
+        <image name="trash" catalog="system" width="121" height="128"/>
+    </resources>
 </document>

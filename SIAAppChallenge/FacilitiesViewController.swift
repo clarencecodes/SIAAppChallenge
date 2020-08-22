@@ -32,6 +32,10 @@ class FacilitiesViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var trashIndicatorContentView: UIView!
+    @IBOutlet weak var trashIndicator: UIView!
+    @IBOutlet weak var trashIndicatorTopConstraint: NSLayoutConstraint!
+    
     @IBOutlet var seats: [UIButton]! {
         didSet {
             for seat in seats {
@@ -51,10 +55,11 @@ class FacilitiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Reload data every 60 seconds
-        reloadTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(reloadData), userInfo: nil, repeats: true)
+        // Reload data every 10 seconds
+        reloadTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(reloadData), userInfo: nil, repeats: true)
         
         getSeatAvailability()
+        getBinStatus()
         
         // If user is checking in, only show available seats, and prompt user to select a seat.
         // If user is not checking in, show available seats and facilities
@@ -102,9 +107,35 @@ class FacilitiesViewController: UIViewController {
     
     @objc private func reloadData() {
         getSeatAvailability()
+        getBinStatus()
         
         if !isCheckingIn {
             getFacilitiesAvailability()
+        }
+    }
+    
+    private func getBinStatus() {
+        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/GetBinStatus")!).response { response in
+            do {
+                let resJson = try JSON.init(data: response.data!)
+                let color = resJson["response"].stringValue
+                
+                if color == "GREEN" {
+                    self.trashIndicator.backgroundColor = .green
+                    self.trashIndicatorTopConstraint.constant = self.trashIndicatorContentView.frame.height - 10
+                } else if color == "YELLOW" {
+                    self.trashIndicator.backgroundColor = .orange
+                    
+                    self.trashIndicatorTopConstraint.constant = self.trashIndicatorContentView.frame.height / 2
+//
+                } else if color == "RED" {
+                    self.trashIndicator.backgroundColor = .red
+                    
+                    self.trashIndicatorTopConstraint.constant = 0
+                }
+            } catch {
+                print("Error getting bin status")
+            }
         }
     }
     
