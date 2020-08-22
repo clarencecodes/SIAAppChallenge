@@ -8,4 +8,5 @@ target 'SIAAppChallenge' do
   # Pods for SIAAppChallenge
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftyJSON'
+  pod 'Toast-Swift', '~> 5.0.1'
 end

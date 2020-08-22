@@ -10,9 +10,10 @@ import AVFoundation
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Toast_Swift
 
 protocol ScannerDelegate {
-    func didScanCode(code: String)
+    func presentLoungeFloorPlanForCheckIn(userId: String)
 }
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
@@ -22,6 +23,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var delegate: ScannerDelegate?
+    
+    var userId: String?
 
     // MARK: - View life cycle
     
@@ -113,7 +116,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
 
     func found(code: String) {
-        print(code)
+        self.userId = code
+        
         let params: [String: Any] = ["id": code]
         let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
         // Check if user is checked in before checking in or out
@@ -123,14 +127,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let result = resJson["result"].boolValue
                 if result == true {
                     // User is checked in, proceed to check out
-                    // TODO: call CheckInLounge API
+                    self.checkOut()
                 } else {
-                    // User is not checked in, proceed to check in
-                    // TODO: call CheckOutLounge API
-                }
-                
-                self.dismiss(animated: true) {
-                    self.delegate?.didScanCode(code: code)
+                    // User is not checked in, proceed to select seat in FacilitiesViewController and check in
+                    self.dismiss(animated: true) {
+                        self.delegate?.presentLoungeFloorPlanForCheckIn(userId: code)
+                    }
                 }
             } catch {
                 print("Error checking if user is checked in")
@@ -146,4 +148,34 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .all
     }
+    
+    private func checkOut() {
+        guard let userId = userId else { return }
+        
+        let params: [String: Any] = [
+            "id": userId
+        ]
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/CheckOutLounge")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
+            do {
+                let resJson = try JSON.init(data: response.data!)
+                let result = resJson["result"].boolValue
+                if result == true {
+                    self.dismiss(animated: true) {
+                        self.view.makeToast("Checkout successful. Thank you for lounging with SilverKris Lounge.")
+                    }
+                } else {
+                    self.dismiss(animated: true) {
+                        self.view.makeToast("Thank you for checking out.")
+                    }
+                }
+            } catch {
+                print("Error checking if user is checked in")
+            }
+        }
+    }
+    
 }

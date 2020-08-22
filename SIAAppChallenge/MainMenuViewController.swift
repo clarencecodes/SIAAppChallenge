@@ -59,9 +59,10 @@ class MainMenuViewController: UIViewController {
 // MARK: - ScannerDelegate
 
 extension MainMenuViewController: ScannerDelegate {
-    func didScanCode(code: String) {
+    func presentLoungeFloorPlanForCheckIn(userId: String) {
         // Display lounge floor plan
         let vc = FacilitiesViewController(nibName: "FacilitiesViewController", bundle: nil)
+        vc.isCheckingIn = true
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.pushViewController(vc, animated: true)
     }

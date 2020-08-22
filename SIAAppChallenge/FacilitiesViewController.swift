@@ -16,6 +16,10 @@ enum FacilityType {
 
 class FacilitiesViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    var isCheckingIn = false
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var meetingRoomBtn: UIButton! {
@@ -43,13 +47,17 @@ class FacilitiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getSeatAvailability()
-        getFacilitiesAvailability()
+        
+        // If user is checking in, only show available seats.
+        // If user is not checking in, show available seats and facilities
+        if !isCheckingIn {
+            getFacilitiesAvailability()
+        }
     }
     
     // MARK: - IBActions
     
     @IBAction func meetingRoomBtnTapped(_ sender: UIButton) {
-        let facility = FacilityType.meetingRoom
         
     }
     
