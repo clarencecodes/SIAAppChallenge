@@ -54,7 +54,11 @@
                         <constraint firstAttribute="height" constant="200" id="jL9-gV-S7S"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Meeting Room"/>
+                    <connections>
+                        <action selector="meetingRoomBtnTapped" destination="-1" eventType="touchUpInside" id="8SC-6q-oVV"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfT-cO-56q" userLabel="Divider">
                     <rect key="frame" x="0.0" y="824" width="350" height="20"/>
@@ -118,6 +122,9 @@
                                         <constraint firstAttribute="width" constant="50" id="On9-DK-x8S"/>
                                         <constraint firstAttribute="height" constant="50" id="PS4-yk-i11"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="HpE-Qy-mOr"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYu-vo-1ou" userLabel="Table">
                                     <rect key="frame" x="60" y="0.0" width="60" height="60"/>
@@ -134,6 +141,9 @@
                                         <constraint firstAttribute="width" constant="50" id="Vka-3t-hHJ"/>
                                         <constraint firstAttribute="height" constant="50" id="cQn-AD-iX8"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="PLx-PI-7E9"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -147,6 +157,9 @@
                                         <constraint firstAttribute="width" constant="50" id="8oV-ie-Pfd"/>
                                         <constraint firstAttribute="height" constant="50" id="eUV-Ii-SfM"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="EKc-ro-BHU"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaA-TV-wql" userLabel="Table">
                                     <rect key="frame" x="60" y="0.0" width="60" height="60"/>
@@ -163,6 +176,9 @@
                                         <constraint firstAttribute="height" constant="50" id="Jso-UH-4rD"/>
                                         <constraint firstAttribute="width" constant="50" id="bvR-e4-SJJ"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="sjN-nW-e7y"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -176,6 +192,9 @@
                                         <constraint firstAttribute="height" constant="50" id="RHv-OL-rUT"/>
                                         <constraint firstAttribute="width" constant="50" id="ZfO-XE-iTb"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="kbn-bW-wX2"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxA-9s-HXO" userLabel="Table">
                                     <rect key="frame" x="60" y="0.0" width="60" height="60"/>
@@ -192,6 +211,9 @@
                                         <constraint firstAttribute="height" constant="50" id="SmM-t9-XLQ"/>
                                         <constraint firstAttribute="width" constant="50" id="czy-aL-EUr"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="gxQ-EO-QWL"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -210,6 +232,9 @@
                                         <constraint firstAttribute="width" constant="50" id="Zxj-oj-M3h"/>
                                         <constraint firstAttribute="height" constant="50" id="u2w-Mp-E8w"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="W71-Mw-zYk"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PN1-V5-t6B" userLabel="Seat 8">
                                     <rect key="frame" x="60" y="0.0" width="50" height="50"/>
@@ -218,6 +243,9 @@
                                         <constraint firstAttribute="height" constant="50" id="Sn4-P7-Yya"/>
                                         <constraint firstAttribute="width" constant="50" id="plr-DI-smo"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="KCq-Ru-oaz"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -239,6 +267,9 @@
                                         <constraint firstAttribute="height" constant="50" id="3vC-wL-4oh"/>
                                         <constraint firstAttribute="width" constant="50" id="Fa2-4Z-FK3"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="7VO-fn-6gz"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFm-co-TK3" userLabel="Seat 8">
                                     <rect key="frame" x="60" y="0.0" width="50" height="50"/>
@@ -247,6 +278,9 @@
                                         <constraint firstAttribute="width" constant="50" id="jGz-hS-shw"/>
                                         <constraint firstAttribute="height" constant="50" id="nfD-9P-ADL"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="VHx-0g-4ab"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -265,6 +299,9 @@
                                         <constraint firstAttribute="width" constant="50" id="VKJ-Bh-V6b"/>
                                         <constraint firstAttribute="height" constant="50" id="n73-gi-1WZ"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="vGL-p2-Lek"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbQ-n7-8cj" userLabel="Seat 8">
                                     <rect key="frame" x="60" y="0.0" width="50" height="50"/>
@@ -273,6 +310,9 @@
                                         <constraint firstAttribute="width" constant="50" id="9FZ-kz-Exz"/>
                                         <constraint firstAttribute="height" constant="50" id="qBm-X1-jw9"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="i8H-18-GUR"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -294,6 +334,9 @@
                                         <constraint firstAttribute="width" constant="50" id="2lt-e0-Qwc"/>
                                         <constraint firstAttribute="height" constant="50" id="SZt-cd-AQV"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="hlr-fC-ZCP"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dom-aa-lzF" userLabel="Seat 8">
                                     <rect key="frame" x="60" y="0.0" width="50" height="50"/>
@@ -302,6 +345,9 @@
                                         <constraint firstAttribute="height" constant="50" id="MTE-gb-ip4"/>
                                         <constraint firstAttribute="width" constant="50" id="huu-eS-LAb"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="WkR-2x-yU9"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -320,6 +366,9 @@
                                         <constraint firstAttribute="height" constant="50" id="UWe-CI-12j"/>
                                         <constraint firstAttribute="width" constant="50" id="fl2-Qb-BLQ"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="3LU-F6-Lbp"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aH6-Wr-zr9" userLabel="Seat 8">
                                     <rect key="frame" x="60" y="0.0" width="50" height="50"/>
@@ -328,6 +377,9 @@
                                         <constraint firstAttribute="height" constant="50" id="0My-1D-BRt"/>
                                         <constraint firstAttribute="width" constant="50" id="P4Z-51-5ty"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="Hur-Ni-uvj"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="168-71-KQB" userLabel="Seat 8">
                                     <rect key="frame" x="120" y="0.0" width="50" height="50"/>
@@ -336,6 +388,9 @@
                                         <constraint firstAttribute="height" constant="50" id="c6h-df-a98"/>
                                         <constraint firstAttribute="width" constant="50" id="jti-bs-wKj"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="lU8-T5-ENe"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -357,6 +412,9 @@
                                         <constraint firstAttribute="height" constant="50" id="6fh-Eu-PxG"/>
                                         <constraint firstAttribute="width" constant="50" id="WJK-rd-ybg"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="vcw-hy-niM"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoR-Q4-f6E" userLabel="Seat 8">
                                     <rect key="frame" x="60" y="0.0" width="50" height="50"/>
@@ -365,6 +423,9 @@
                                         <constraint firstAttribute="width" constant="50" id="EhM-yQ-wEB"/>
                                         <constraint firstAttribute="height" constant="50" id="vfr-Er-0y4"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="l05-Ry-ShN"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYl-N5-aTP" userLabel="Seat 8">
                                     <rect key="frame" x="120" y="0.0" width="50" height="50"/>
@@ -373,6 +434,9 @@
                                         <constraint firstAttribute="width" constant="50" id="0rQ-Qq-7NM"/>
                                         <constraint firstAttribute="height" constant="50" id="Anp-ez-pnf"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="rlY-ks-JZ9"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -391,6 +455,9 @@
                                         <constraint firstAttribute="width" constant="50" id="H1A-Pw-dHo"/>
                                         <constraint firstAttribute="height" constant="50" id="t86-7D-yAr"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="TtS-Zv-3dI"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdZ-ls-JE9" userLabel="Seat 8">
                                     <rect key="frame" x="60" y="0.0" width="50" height="50"/>
@@ -399,6 +466,9 @@
                                         <constraint firstAttribute="height" constant="50" id="2VA-Wg-NTZ"/>
                                         <constraint firstAttribute="width" constant="50" id="RfG-Uk-d1o"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="qSg-qN-Tfv"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9B-NV-VND" userLabel="Seat 8">
                                     <rect key="frame" x="120" y="0.0" width="50" height="50"/>
@@ -407,6 +477,9 @@
                                         <constraint firstAttribute="width" constant="50" id="9wU-3Y-H8Y"/>
                                         <constraint firstAttribute="height" constant="50" id="uVd-Y0-zFr"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="w0p-sa-BcU"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -428,6 +501,9 @@
                                         <constraint firstAttribute="width" constant="50" id="5UG-SJ-qZv"/>
                                         <constraint firstAttribute="height" constant="50" id="jQA-Sj-3qC"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="RaS-Fl-Bgv"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuX-23-bMv" userLabel="Seat 8">
                                     <rect key="frame" x="60" y="0.0" width="50" height="50"/>
@@ -436,6 +512,9 @@
                                         <constraint firstAttribute="height" constant="50" id="moG-4h-sEd"/>
                                         <constraint firstAttribute="width" constant="50" id="o1u-5Z-IYk"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="p5A-10-NEr"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HC-3g-Age" userLabel="Seat 8">
                                     <rect key="frame" x="120" y="0.0" width="50" height="50"/>
@@ -444,6 +523,9 @@
                                         <constraint firstAttribute="height" constant="50" id="v4N-nH-6Op"/>
                                         <constraint firstAttribute="width" constant="50" id="xJD-0y-fxp"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="seatBtnTapped:" destination="-1" eventType="touchUpInside" id="gHI-gi-Ob5"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -452,7 +534,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hG-lH-h1L">
                     <rect key="frame" x="846" y="804" width="520" height="200"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJ6-cb-LtT" userLabel="Gents">
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJ6-cb-LtT" userLabel="Gents">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="200"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -460,6 +542,7 @@
                                 <constraint firstAttribute="width" constant="100" id="GaG-Ho-HGc"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Gents"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Lf-bE-hzu" userLabel="Divider">
@@ -469,13 +552,14 @@
                                 <constraint firstAttribute="width" constant="5" id="XGg-cG-DH2"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ri5-OX-OqK" userLabel="Ladies">
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ri5-OX-OqK" userLabel="Ladies">
                             <rect key="frame" x="105" y="0.0" width="100" height="200"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="PAv-Sp-Znb"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Ladies"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pk-K6-aVu" userLabel="Divider">
@@ -492,7 +576,11 @@
                                 <constraint firstAttribute="width" constant="100" id="Hjg-bH-K99"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Shower 1"/>
+                            <connections>
+                                <action selector="showerBtnTapped:" destination="-1" eventType="touchUpInside" id="2uj-uY-u7z"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdC-H2-lBh" userLabel="Divider">
                             <rect key="frame" x="310" y="0.0" width="5" height="200"/>
@@ -508,7 +596,11 @@
                                 <constraint firstAttribute="width" constant="100" id="KhB-wo-EjA"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Shower 2"/>
+                            <connections>
+                                <action selector="showerBtnTapped:" destination="-1" eventType="touchUpInside" id="BZa-sb-Kce"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-4s-ECL" userLabel="Divider">
                             <rect key="frame" x="415" y="0.0" width="5" height="200"/>
@@ -524,7 +616,11 @@
                                 <constraint firstAttribute="width" constant="100" id="Bhh-x5-Itz"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Shower 3"/>
+                            <connections>
+                                <action selector="showerBtnTapped:" destination="-1" eventType="touchUpInside" id="ZeQ-NU-koN"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

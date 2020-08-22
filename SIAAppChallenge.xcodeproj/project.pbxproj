@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		7514663024F04AEE0051CFD9 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7514662E24F04AEE0051CFD9 /* MainMenuViewController.xib */; };
 		7514663324F055620051CFD9 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514663124F055620051CFD9 /* FacilitiesViewController.swift */; };
 		7514663424F055620051CFD9 /* FacilitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7514663224F055620051CFD9 /* FacilitiesViewController.xib */; };
+		75C2DEEB24F0CA6600044850 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C2DEEA24F0CA6600044850 /* ScannerViewController.swift */; };
 		9556181B2D6FC9E6581C3BE0 /* Pods_SIAAppChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF9880EAABC1EB2072CF558 /* Pods_SIAAppChallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		7514662E24F04AEE0051CFD9 /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 		7514663124F055620051CFD9 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		7514663224F055620051CFD9 /* FacilitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilitiesViewController.xib; sourceTree = "<group>"; };
+		75C2DEEA24F0CA6600044850 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		7BAF62B365F79AE6F4AB5F56 /* Pods-SIAAppChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAAppChallenge.debug.xcconfig"; path = "Target Support Files/Pods-SIAAppChallenge/Pods-SIAAppChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		FD8A5D1F8E661A1C60D0F265 /* Pods-SIAAppChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAAppChallenge.release.xcconfig"; path = "Target Support Files/Pods-SIAAppChallenge/Pods-SIAAppChallenge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,7 +58,6 @@
 				7BAF62B365F79AE6F4AB5F56 /* Pods-SIAAppChallenge.debug.xcconfig */,
 				FD8A5D1F8E661A1C60D0F265 /* Pods-SIAAppChallenge.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -92,6 +93,7 @@
 				7514662E24F04AEE0051CFD9 /* MainMenuViewController.xib */,
 				7514663124F055620051CFD9 /* FacilitiesViewController.swift */,
 				7514663224F055620051CFD9 /* FacilitiesViewController.xib */,
+				75C2DEEA24F0CA6600044850 /* ScannerViewController.swift */,
 			);
 			path = SIAAppChallenge;
 			sourceTree = "<group>";
@@ -222,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7514662F24F04AEE0051CFD9 /* MainMenuViewController.swift in Sources */,
+				75C2DEEB24F0CA6600044850 /* ScannerViewController.swift in Sources */,
 				7514661E24F02B140051CFD9 /* ViewController.swift in Sources */,
 				7514661A24F02B140051CFD9 /* AppDelegate.swift in Sources */,
 				7514661C24F02B140051CFD9 /* SceneDelegate.swift in Sources */,
@@ -373,6 +376,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KNKN54A4FZ;
 				INFOPLIST_FILE = SIAAppChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,7 +384,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.highflyers.SIAAppChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -392,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KNKN54A4FZ;
 				INFOPLIST_FILE = SIAAppChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -399,7 +404,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.highflyers.SIAAppChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

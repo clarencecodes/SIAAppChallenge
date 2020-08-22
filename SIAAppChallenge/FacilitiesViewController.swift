@@ -10,6 +10,10 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+enum FacilityType {
+    case meetingRoom, seat, shower
+}
+
 class FacilitiesViewController: UIViewController {
     
     // MARK: - IBOutlets
@@ -17,7 +21,6 @@ class FacilitiesViewController: UIViewController {
     @IBOutlet weak var meetingRoomBtn: UIButton! {
         didSet {
             meetingRoomBtn.backgroundColor = UIColor.lightGray
-            meetingRoomBtn.setTitleColor(.black, for: .normal)
         }
     }
     
@@ -42,6 +45,26 @@ class FacilitiesViewController: UIViewController {
         getSeatAvailability()
         getFacilitiesAvailability()
     }
+    
+    // MARK: - IBActions
+    
+    @IBAction func meetingRoomBtnTapped(_ sender: UIButton) {
+        let facility = FacilityType.meetingRoom
+        
+    }
+    
+    @IBAction func seatBtnTapped(_ sender: UIButton) {
+        print(sender.tag)
+        if sender.backgroundColor == .green {
+            
+        }
+    }
+    
+    @IBAction func showerBtnTapped(_ sender: UIButton) {
+        print(sender.tag)
+    }
+    
+    // MARK: - Network requests
     
     private func getSeatAvailability() {
         AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/GetSeatAvailability/")!).response { response in
