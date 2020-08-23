@@ -137,7 +137,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     } else {
                         // User is not checked in, proceed to select seat in FacilitiesViewController and check in
                         self.dismiss(animated: true) {
-                            self.checkInOutDelegate?.presentLoungeFloorPlanForCheckIn(userId: code)
+                            self.checkInOutDelegate?.checkIn(userId: code)
                         }
                     }
                 } catch {

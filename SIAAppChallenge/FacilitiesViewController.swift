@@ -21,8 +21,9 @@ class FacilitiesViewController: UIViewController {
     
     // MARK: - Properties
     var reloadTimer: Timer!
-    var isCheckingIn = false
     var userId: String?
+    
+    var justCheckedIn = false
     
     // MARK: - IBOutlets
     
@@ -60,13 +61,12 @@ class FacilitiesViewController: UIViewController {
         
         getSeatAvailability()
         getBinStatus()
+        getFacilitiesAvailability()
         
-        // If user is checking in, only show available seats, and prompt user to select a seat.
-        // If user is not checking in, show available seats and facilities
-        if !isCheckingIn {
-            getFacilitiesAvailability()
-        } else {
-            let alert = UIAlertController(title: "Welcome", message: "Please select your seat to get started. Available seats are in green while occupied seats are red.", preferredStyle: .alert)
+        if justCheckedIn {
+            justCheckedIn = false
+            
+            let alert = UIAlertController(title: "Welcome", message: "Facilities marked in green are available while facilities marked in red are occupied. Feel free to make bookings of facilities here.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -84,15 +84,44 @@ class FacilitiesViewController: UIViewController {
     }
     
     @IBAction func seatBtnTapped(_ sender: UIButton) {
-        // If user is checking in and the seat is available
-        // go ahead with checking in to the lounge
-        if let userId = userId,
-            isCheckingIn && sender.backgroundColor == .green {
-            checkIn(userId: userId, seatNo: sender.tag)
-        }
+        let params: [String: Any] = [
+            "seatNo": sender.tag
+        ]
         
-        if !isCheckingIn && sender.backgroundColor == .lightGray {
-            self.checkOut()
+        if sender.backgroundColor == .green {
+            // Fill seat
+            
+            AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/FillSeat")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil).response { response in
+                
+                do {
+                    let resJson = try JSON.init(data: response.data!)
+                    let filled = resJson["result"].boolValue
+                    
+                    if filled {
+                        sender.backgroundColor = .red
+                        self.view.makeToast("Seat \(sender.tag) filled")
+                    }
+                } catch {
+                    self.view.makeToast("Error parsing JSON data when filling seat")
+                }
+            }
+        } else if sender.backgroundColor == .red {
+            // Free up seat
+            
+            AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/EmptySeat")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil).response { response in
+                
+                do {
+                    let resJson = try JSON.init(data: response.data!)
+                    let freed = resJson["result"].boolValue
+                    
+                    if freed {
+                        sender.backgroundColor = .green
+                        self.view.makeToast("Seat \(sender.tag) freed")
+                    }
+                } catch {
+                    self.view.makeToast("Error parsing JSON data when freeing up seat")
+                }
+            }
         }
     }
     
@@ -110,10 +139,7 @@ class FacilitiesViewController: UIViewController {
     @objc private func reloadData() {
         getSeatAvailability()
         getBinStatus()
-        
-        if !isCheckingIn {
-            getFacilitiesAvailability()
-        }
+        getFacilitiesAvailability()
     }
     
     private func getBinStatus() {
@@ -129,7 +155,7 @@ class FacilitiesViewController: UIViewController {
                     self.trashIndicator.backgroundColor = .orange
                     
                     self.trashIndicatorTopConstraint.constant = self.trashIndicatorContentView.frame.height / 2
-//
+                    
                 } else if color == "RED" {
                     self.trashIndicator.backgroundColor = .red
                     
@@ -194,69 +220,6 @@ class FacilitiesViewController: UIViewController {
                 
             } catch {
                 print("Error getting facilities availability")
-            }
-        }
-    }
-    
-    private func checkIn(userId: String, seatNo: Int) {
-        
-        let params: [String: Any] = [
-            "id": userId,
-            "seatNo": seatNo
-        ]
-        let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
-        
-        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/CheckInLounge")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
-            do {
-                let resJson = try JSON.init(data: response.data!)
-                let result = resJson["result"].boolValue
-                
-                if result == true {
-                    
-                    // Check in successful
-                    
-                    self.isCheckingIn = false
-                    
-                    // Reload updated available seats and facilities from API
-                    self.getSeatAvailability()
-                    self.getFacilitiesAvailability()
-                    
-                    self.view.makeToast("You have successfully checked in. Welcome to SilverKris Lounge.")
-                } else {
-                    self.view.makeToast("User has already checked in.")
-                }
-            } catch {
-                print("Error checking in")
-            }
-        }
-        
-    }
-    
-    private func checkOut() {
-        guard let userId = userId else { return }
-        
-        let params: [String: Any] = [
-            "id": userId
-        ]
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        
-        AF.request(URL(string: "https://lounge-management-backend.herokuapp.com/CheckOutLounge")!, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).response { response in
-            do {
-                let resJson = try JSON.init(data: response.data!)
-                let result = resJson["result"].boolValue
-                if result == true {
-                    self.dismiss(animated: true) {
-                        self.view.makeToast("Checkout successful. Thank you for lounging with SilverKris Lounge.")
-                    }
-                } else {
-                    self.dismiss(animated: true) {
-                        self.view.makeToast("Thank you for checking out.")
-                    }
-                }
-            } catch {
-                print("Error checking if user is checked in")
             }
         }
     }
